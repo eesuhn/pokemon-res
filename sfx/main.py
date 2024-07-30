@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import subprocess
 
 
-VOLUME = -20
+VOLUME = +4
 
 
 def get_download_link(move_name):
@@ -48,7 +48,7 @@ def convert_to_wav_and_rename(move_name):
 		"-y",
 		wav_file
 	])
-	print(f"Converted, renamed, and reduced volume: {wav_file}")
+	print(f"OUTPUT: {wav_file}")
 
 
 def main():

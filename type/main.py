@@ -7,17 +7,10 @@ POS = (56, 56)
 
 def main():
 	types = [
-		# 'normal',
-		# 'fire',
-		# 'water',
-		# 'electric',
-		# 'grass',
-		# 'ice',
-		# 'fighting',
-		# 'poison',
-		'psychic',
-		# 'bug',
-		# 'rock'
+		'normal',
+		'fire',
+		'water',
+		'grass',
 	]
 
 	for t in types:
