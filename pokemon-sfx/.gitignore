@@ -1,0 +1,5 @@
+raw/*
+!raw/.gitkeep
+
+reduced/*
+!reduced/.gitkeep
