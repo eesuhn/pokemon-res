@@ -2,7 +2,7 @@ import sys
 from PIL import Image
 
 
-SRC = "dialog.png"  # 960 * 210
+SRC = "raw/dialog.png"  # 960 * 210
 WIDTH = 380
 HEIGHT = 210
 HEIGHT_REDUCED = 180
@@ -11,7 +11,7 @@ HEIGHT_REDUCED = 180
 def main():
 	result = combine_cropped(crop_front(), crop_middle(), crop_back())
 	result = result.resize((WIDTH, HEIGHT_REDUCED), resample=Image.NEAREST)
-	result.save("battle-dialog-right.png")
+	result.save("output/battle-dialog-right.png")
 
 
 def crop_front():

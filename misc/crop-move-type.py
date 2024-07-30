@@ -1,7 +1,7 @@
 from PIL import Image
 
 
-SRC = "physical_move.png"
+SRC = "raw/physical_move.png"
 POS = (90, 289)
 WIDTH = 714
 HEIGHT = 316
@@ -10,7 +10,7 @@ HEIGHT = 316
 def main():
 	cropped = crop()
 	result = cropped
-	result.save("special-move.png")
+	result.save("output/physical-move.png")
 
 
 def crop():
