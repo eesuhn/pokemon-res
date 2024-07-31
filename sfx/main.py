@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import subprocess
 
 
-VOLUME = +4
+VOLUME = +1
 
 
 def get_download_link(move_name):
@@ -35,32 +35,64 @@ def download_mp3(move_name):
 		print(f"Couldn't find download link for: {move_name}")
 
 
-def convert_to_wav_and_rename(move_name):
-	mp3_file = f"raw/{move_name}.mp3"
-	wav_file = f"reduced/{move_name.lower().replace(' ', '-')}.wav"
+def compress_and_rename(move_name):
+	input_file = f"raw/{move_name}.mp3"
+	output_file = f"reduced/{move_name.lower().replace(' ', '-')}.mp3"
 
 	subprocess.run([
 		"ffmpeg",
-		"-i", mp3_file,
-		"-af", "volume=" + str(VOLUME) + "dB",
-		"-acodec", "pcm_s16le",
-		"-ar", "44100",
+		"-i", input_file,
+		"-af", f"volume={VOLUME}dB",
+		"-acodec", "libmp3lame",
+		"-b:a", "128k",
 		"-y",
-		wav_file
+		output_file
 	])
-	print(f"OUTPUT: {wav_file}")
+	print(f"OUTPUT: {output_file}")
 
 
 def main():
 	moveList = [
+		"Muddy Water",
+		"Smokescreen",
+		"Bulk Up",
+		"Blaze Kick",
+		"Body Slam",
+		"Psycho Cut",
+		"Ancient Power",
+		"Icy Wind",
+		"Growth",
+		"Rock Tomb",
+		"X Scissor",
+		"Heart Stamp",
+		"Poison Sting",
+		"Poison Fang",
+		"Double Kick 1hit",
+		"Ice Punch",
 		"Vine Whip",
+		"Spark",
 		"Water Gun",
-		"Ember"
+		"Ember",
+		"Cut",
+		"Pound",
+		"Scratch",
+		"Tackle",
+		"Quiver Dance",
+		"Shell Smash",
+		"Agility",
+		"String Shot",
+		"Screech",
+		"Charm",
+		"Swords Dance",
+		"Harden",
+		"Meditate",
+		"Leer",
+		"Growl"
 	]
 
 	for move in moveList:
 		download_mp3(move)
-		convert_to_wav_and_rename(move)
+		compress_and_rename(move)
 
 
 if __name__ == '__main__':
