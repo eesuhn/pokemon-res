@@ -3,7 +3,9 @@ import requests
 from PIL import Image
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
+
 BASE_URL_FRONT = "https://img.pokemondb.net/sprites/black-white/anim/normal/{}.gif"
+
 
 def download_gif(url, filename) -> bool:
 	response = requests.get(url)
@@ -12,6 +14,7 @@ def download_gif(url, filename) -> bool:
 			f.write(response.content)
 		return True
 	return False
+
 
 def process_gif(input_path, output_path) -> bool:
 	try:
@@ -32,6 +35,7 @@ def process_gif(input_path, output_path) -> bool:
 		print(f"Image processing failed: {e}")
 		return False
 
+
 def process_pokemon(pokemon_name) -> None:
 	pokemon_name_lower = pokemon_name.lower()
 	url = BASE_URL_FRONT.format(pokemon_name_lower)
@@ -48,11 +52,13 @@ def process_pokemon(pokemon_name) -> None:
 	else:
 		print(f"Failed to download {pokemon_name}")
 
+
 def process_pokemon_with_timeout(pokemon_name):
 	try:
 		process_pokemon(pokemon_name)
 	except Exception as e:
 		print(f"Error processing {pokemon_name}: {str(e)}")
+
 
 def main():
 	# Input list of Pokemon names
@@ -72,6 +78,7 @@ def main():
 				future.result()
 			except Exception as e:
 				print(f"{pokemon} generated an exception: {str(e)}")
+
 
 if __name__ == "__main__":
 	main()
