@@ -1,0 +1,35 @@
+import os
+import sys
+
+
+from gif.main import main as gif_main
+from static.main import main as static_main
+from sfx.main import main as sfx_main
+
+
+sys.path.append(os.path.join(os.path.dirname(__file__), 'gif'))
+sys.path.append(os.path.join(os.path.dirname(__file__), 'static'))
+sys.path.append(os.path.join(os.path.dirname(__file__), 'sfx'))
+
+
+def main():
+	pokemon_names = [
+		'gengar'
+	]
+
+	move_names = [
+		"Dream Eater"
+	]
+
+	print("<<GIF>>>.")
+	gif_main(pokemon_names)
+
+	print("<<<STATIC>>>")
+	static_main(pokemon_names)
+
+	print("<<<SFX>>>")
+	sfx_main(move_names)
+
+
+if __name__ == "__main__":
+	main()
