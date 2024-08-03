@@ -26,7 +26,7 @@ def download_mp3(move_name):
 		response = requests.get(download_link)
 		if response.status_code == 200:
 			filename = f"{move_name}.mp3"
-			with open(f"raw/{filename}", "wb") as f:
+			with open(f"sfx/raw/{filename}", "wb") as f:
 				f.write(response.content)
 			print(f"Downloaded: {filename}")
 		else:
@@ -36,8 +36,8 @@ def download_mp3(move_name):
 
 
 def compress_and_rename(move_name):
-	input_file = f"raw/{move_name}.mp3"
-	output_file = f"reduced/{move_name.lower().replace(' ', '-')}.mp3"
+	input_file = f"sfx/raw/{move_name}.mp3"
+	output_file = f"sfx/reduced/{move_name.lower().replace(' ', '-')}.mp3"
 
 	subprocess.run([
 		"ffmpeg",
@@ -51,49 +51,15 @@ def compress_and_rename(move_name):
 	print(f"OUTPUT: {output_file}")
 
 
-def main():
-	moveList = [
-		"Muddy Water",
-		"Smokescreen",
-		"Bulk Up",
-		"Blaze Kick",
-		"Body Slam",
-		"Psycho Cut",
-		"Ancient Power",
-		"Icy Wind",
-		"Growth",
-		"Rock Tomb",
-		"X Scissor",
-		"Heart Stamp",
-		"Poison Sting",
-		"Poison Fang",
-		"Double Kick 1hit",
-		"Ice Punch",
-		"Vine Whip",
-		"Spark",
-		"Water Gun",
-		"Ember",
-		"Cut",
-		"Pound",
-		"Scratch",
-		"Tackle",
-		"Quiver Dance",
-		"Shell Smash",
-		"Agility",
-		"String Shot",
-		"Screech",
-		"Charm",
-		"Swords Dance",
-		"Harden",
-		"Meditate",
-		"Leer",
-		"Growl"
-	]
-
+def main(moveList):
 	for move in moveList:
 		download_mp3(move)
 		compress_and_rename(move)
 
 
 if __name__ == '__main__':
-	main()
+	default_moveList = [
+		"Muddy Water",
+		"Smokescreen"
+	]
+	main(default_moveList)

@@ -56,32 +56,9 @@ def resize_image(input_path, output_path, size=(96, 96)):
 			print(f"Image {input_path} is empty or fully transparent")
 
 
-def main():
-	pokemon_names = [
-		'blaziken',
-		'breloom',
-		'bulbasaur',
-		'charmander',
-		'dustox',
-		'exploud',
-		'geodude',
-		'heracross',
-		'hitmonchan',
-		'marshtomp',
-		'mewtwo',
-		'nidorino',
-		'onix',
-		'pikachu',
-		'regice',
-		'scyther',
-		'slowpoke',
-		'snorlax',
-		'squirtle',
-		'toxicroak'
-	]
-
-	output_folder = 'raw'
-	resized_folder = 'output'
+def main(pokemon_names):
+	output_folder = 'static/raw'
+	resized_folder = 'static/output'
 
 	for name in pokemon_names:
 		file_path = download_pokemon(name, output_folder)
@@ -91,4 +68,8 @@ def main():
 
 
 if __name__ == "__main__":
-	main()
+	default_pokemon_names = [
+		'blaziken',
+		'breloom'
+	]
+	main(default_pokemon_names)

@@ -47,8 +47,8 @@ def process_pokemon(pokemon_name) -> None:
 
 		output_name = f"{pokemon_name.capitalize()}-{view}"
 
-		raw_filename = os.path.join('raw', f'{pokemon_name_lower}-{view}.gif')
-		resized_filename = os.path.join('resized', f'{output_name}.gif')
+		raw_filename = os.path.join('gif/raw', f'{pokemon_name_lower}-{view}.gif')
+		resized_filename = os.path.join('gif/resized', f'{output_name}.gif')
 
 		if os.path.exists(resized_filename):
 			print(f"{output_name} already exists, skipping.")
@@ -74,14 +74,7 @@ def process_pokemon_with_timeout(pokemon_name):
 		print(f"Error processing {pokemon_name}: {str(e)}")
 
 
-def main():
-	# Input list of Pokemon names in lowercase
-	pokemon_names = [
-		'bulbasaur',
-		'squirtle',
-		'charmander'
-	]
-
+def main(pokemon_names):
 	# Adjust max_workers to control the number of threads
 	with ThreadPoolExecutor(max_workers=3) as executor:
 		future_to_pokemon = {executor.submit(process_pokemon_with_timeout, name): name for name in pokemon_names}
@@ -94,4 +87,8 @@ def main():
 
 
 if __name__ == "__main__":
-	main()
+	default_pokemon_names = [
+		'blaziken',
+		'breloom'
+	]
+	main(default_pokemon_names)
