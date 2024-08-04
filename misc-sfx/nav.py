@@ -1,6 +1,6 @@
 import ffmpeg
 
-input_file = 'raw/a_button_trimmed.mp3'
+input_file = 'raw/a_button.mp3'
 output_file = 'output/button-a.mp3'
 
 stream = (
