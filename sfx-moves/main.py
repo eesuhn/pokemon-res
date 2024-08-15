@@ -40,10 +40,11 @@ def download(move: str) -> None:
 
 def compress(move: str) -> None:
 	input_file = os.path.join(INPUT_PATH, move + '.mp3')
-	output_file = os.path.join(OUTPUT_PATH, move + '.mp3')
+	output_file = os.path.join(OUTPUT_PATH, move.lower().replace(' ', '-') + '.mp3')
 	subprocess.run([
 		'ffmpeg',
 		'-i', input_file,
+		'-vn',
 		'-af', f'volume={VOLUME}dB',
 		"-acodec", "libmp3lame",
 		"-b:a", "128k",
