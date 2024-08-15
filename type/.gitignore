@@ -1,5 +1,0 @@
-output/*
-!output/.gitkeep
-
-raw/*
-!raw/.gitkeep
