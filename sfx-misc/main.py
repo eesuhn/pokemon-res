@@ -8,7 +8,7 @@ OUTPUT_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), 'out'))
 
 def adjust_volume(target_file: str, volume: int, file_extension: str) -> str:
 	input_file = os.path.join(INPUT_PATH, target_file + file_extension)
-	output_file = os.path.join(OUTPUT_PATH, target_file + file_extension)
+	output_file = os.path.join(OUTPUT_PATH, target_file + '.mp3')
 
 	stream = (
 		ffmpeg
@@ -40,5 +40,7 @@ if __name__ == '__main__':
 		('button-a', -1),
 		('ending-theme', -5),
 		('battle-theme', -8, '.wav'),
+		('stat-fell', -4),
+		('stat-rose', -4),
 	]
 	main(sfx_with_volume)
