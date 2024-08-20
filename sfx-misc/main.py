@@ -42,5 +42,6 @@ if __name__ == '__main__':
 		('battle-theme', -8, '.wav'),
 		('stat-fell', -4),
 		('stat-rose', -4),
+		('landing-theme', -5, '.m4a'),
 	]
 	main(sfx_with_volume)
